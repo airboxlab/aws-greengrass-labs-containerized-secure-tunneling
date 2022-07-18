@@ -32,11 +32,11 @@ jobs:
         
       - name: Build, tag, and push image to Amazon ECR
         uses: docker/build-push-action@v2
+        working-directory: ./src
         with:
           context: .   
           push: true
           platforms: linux/amd64,linux/arm64,linux/arm/v7
-          working-directory: ./src
           file: Dockerfile
           tags: | 
             ${{ steps.login-ecr.outputs.registry }}/foobot/sab/gg_secure_tunneling:latest
