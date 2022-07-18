@@ -33,8 +33,8 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=true
 
-RUN apt-get update && apt-get install -y python3 python3-pip openssl 
-RUN  python3 -m pip install awsiotsdk==1.9.2
+RUN apt-get update && apt-get install -y python3 python3-pip openssl cmake git clang python3-dev
+RUN export CC=/usr/bin/clang && export CXX=/usr/bin/clang++ && python3 -m pip install awsiotsdk==1.9.2
 
 RUN mkdir /app
 WORKDIR /app/
